@@ -3,39 +3,41 @@
 <head>
     <title>Responsive Table</title>
     <style>
-        /* html และ body คือกรอบใหญ่สุดของหน้าเว็บ 
-           เราต้องสั่งให้มันสูงเต็ม 100% ก่อน ไม่งั้นตารางข้างในจะขยายตามไม่ได้
+        /* ส่วนที่ 1: ทำให้เต็มจอ (Cover entire web page) 
+           ต้องสั่ง html และ body ให้สูง 100% ไม่งั้นตารางจะไม่รู้ว่า "เต็มจอ" คือเท่าไหร่
         */
         html, body {
-            height: 100%;   /* ความสูงเต็มจอ 100% */
-            margin: 0;      /* ลบขอบขาวๆ รอบหน้าเว็บออกให้หมด */
-            padding: 0;     /* ลบระยะห่างภายในออกให้หมด */
+            height: 100%;
+            margin: 0;      /* ลบขอบขาวรอบนอก */
+            padding: 0;
         }
 
-        /* ปรับแต่งตัวตาราง */
-        table {
-            width: 100%;    /* กว้าง 100% (ยืดตามแนวนอนจนสุด) */
-            height: 100%;   /* สูง 100% (ยืดตามแนวตั้งจนสุด) */
-            border-collapse: collapse; /* ยุบเส้นขอบให้แนบสนิทกัน */
-        }
-
-        /* ปรับแต่งช่องข้อมูล (Cell) ทั้งสองช่อง */
-        td {
-            width: 50%;     /* แต่ละช่องแบ่งกันคนละครึ่ง (50-50) */
-            text-align: center;      /* จัดตัวหนังสือให้อยู่ตรงกลาง (ซ้าย-ขวา) */
-            vertical-align: middle;  /* จัดตัวหนังสือให้อยู่ตรงกลาง (บน-ล่าง) */
-            font-family: sans-serif; /* เปลี่ยนฟอนต์ให้อ่านง่ายขึ้น (สวยกว่า default) */
-            font-size: 20px;         /* ขนาดตัวอักษร */
-        }
-
-        /* กำหนดสีพื้นหลังแยกแต่ละช่อง 
-           (ใช้วิธีเรียก class หรือจะใส่ style ใน html ก็ได้ แต่แบบนี้สะอาดกว่า)
+        /* ส่วนที่ 2: ตัวตาราง 
+           width: 100% = กว้างเต็มแนวนอน
+           height: 100% = สูงเต็มแนวตั้ง
         */
-        .box-one {
+        table {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse; /* ลบช่องว่างระหว่างเซลล์ให้แนบสนิท */
+        }
+
+        /* ส่วนที่ 3: ทำให้ยืดหดได้ (Table must shrink) 
+           ใช้ width: 50% เพื่อแบ่งครึ่งจอแบบ Responsive (ไม่ใช้ px ตายตัว)
+        */
+        td {
+            width: 50%; 
+            text-align: center;     /* จัดตัวหนังสือให้อยู่ตรงกลางซ้ายขวา */
+            vertical-align: middle; /* จัดตัวหนังสือให้อยู่ตรงกลางบนล่าง */
+            color: black;
+            font-size: 20px;
+        }
+
+        /* สีพื้นหลัง (เอามาจากข้อ 1.5) */
+        .left-cell {
             background-color: #90EE90; /* สีเขียวอ่อน */
         }
-
-        .box-two {
+        .right-cell {
             background-color: #87CEEB; /* สีฟ้าอ่อน */
         }
     </style>
@@ -44,15 +46,9 @@
 
     <table>
         <tr>
-            <td class="box-one">
-                First cell<br>
-                (ยืดหดได้ตามจอ)
-            </td>
-
-            <td class="box-two">
-                Second cell<br>
-                (เต็มหน้าจอเป๊ะ)
-            </td>
+            <td class="left-cell">First cell</td>
+            
+            <td class="right-cell">Second cell</td>
         </tr>
     </table>
 

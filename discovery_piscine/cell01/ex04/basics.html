@@ -3,23 +3,72 @@
 <head>
     <title>Basics</title>
     <style>
+        /* จัดกลางทั้งหน้า */
         body {
-            background-color: pink; /* พื้นหลังสีชมพู */
+            background-color: pink;
+            text-align: center; 
+            margin: 0;
+            padding: 20px;
         }
+
         h1 {
-            color: white; /* ตัวหนังสือสีขาว */
-            text-align: center; /* จัดกลาง */
+            color: white;
+            font-size: 40px;
         }
-        /* จัดวางรูปให้อยู่คู่กันด้วยตาราง */
-        table { width: 100%; }
-        td { width: 50%; text-align: center; }
-        img { max-width: 200px; display: block; margin: 0 auto; }
-        
-        /* จัด Footer ตามโจทย์ */
+
+        /* ปรับกล่องร้านค้า */
+        .shop-box {
+            display: inline-block;  /* วางข้างกัน */
+            vertical-align: middle; /* จัดระดับเดียวกัน */
+            margin: 20px;
+            
+            /* --- แก้ตรงนี้: บังคับขนาดให้เท่ากันเป๊ะ --- */
+            width: 300px;   /* กว้างเท่ากัน */
+            height: 250px;  /* สูงเท่ากัน */
+            /* -------------------------------------- */
+
+            background-color: white; /* พื้นขาว */
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            
+            /* จัดเนื้อหาข้างในกล่องให้อยู่ตรงกลาง (แนวตั้ง) */
+            line-height: 250px; /* เทคนิค: ให้ line-height เท่ากับ height จะช่วยจัดกลางได้ */
+            overflow: hidden;   /* กันเนื้อหาล้น */
+        }
+
+        /* ต้องห่อเนื้อหาข้างในอีกที เพื่อ reset line-height */
+        .content-wrapper {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: normal; /* กลับมาเป็นปกติ */
+            width: 100%;
+        }
+
+        /* ปรับรูป */
+        .shop-box img {
+            display: block;
+            max-width: 180px;      /* ขยายรูปให้เต็มตาขึ้นหน่อย */
+            max-height: 100px;     /* คุมความสูงรูป */
+            width: auto;
+            height: auto;
+            margin: 0 auto 15px auto;
+        }
+
+        /* ปรับสไตล์ลิ้งก์ */
+        .shop-box a {
+            display: block; /* ให้ลิ้งก์อยู่บรรทัดใหม่ */
+            color: black; 
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Footer */
         .footer-style {
-            text-align: right;    /* ชิดขวา */
-            font-style: italic;   /* ตัวเอียง */
-            font-family: monospace; /* ฟอนต์เครื่องพิมพ์ดีด */
+            text-align: right; 
+            font-style: italic;
+            font-family: monospace;
+            margin-top: 50px;
         }
     </style>
 </head>
@@ -27,23 +76,21 @@
 
     <h1>Welcome to My Shop 🛒</h1>
 
-    <table>
-        <tr>
-            <td>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
-                <br>
-                <a href="https://www.amazon.com">Shop at Amazon</a>
-            </td>
-            <td>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg" alt="eBay">
-                <br>
-                <a href="https://www.ebay.com">Shop at eBay</a>
-            </td>
-        </tr>
-    </table>
+    <div class="shop-box">
+        <div class="content-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+            <a href="https://www.amazon.com" target="_blank">Shop at Amazon</a>
+        </div>
+    </div>
 
-    <hr>
+    <div class="shop-box">
+        <div class="content-wrapper">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg" alt="eBay">
+            <a href="https://www.ebay.com" target="_blank">Shop at eBay</a>
+        </div>
+    </div>
 
+    <hr style="margin-top: 30px;">
     <p class="footer-style">&copy; ntaweesa 2026</p>
 
 </body>

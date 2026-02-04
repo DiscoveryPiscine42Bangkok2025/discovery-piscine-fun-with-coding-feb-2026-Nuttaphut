@@ -1,0 +1,87 @@
+/* menu.css */
+
+body {
+    background-color: #FFF5E1; /* พื้นหลังสีครีมไข่ไก่ */
+    font-family: 'Kanit', sans-serif; /* ใช้ฟอนต์ Kanit สวยๆ */
+    display: flex;
+    justify-content: center; /* จัดกลางจอ */
+    padding-top: 100px;
+    margin: 0;
+}
+
+/* กล่องหลัก */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* ปุ่มเมนู (Top Bun) */
+.dropbtn {
+    background: linear-gradient(45deg, #FF6B6B, #FF8E53); /* ไล่สีส้มอมแดง */
+    color: white;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px; /* ทำปุ่มมนๆ */
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4); /* เงาฟุ้งๆ */
+    transition: transform 0.2s; /* เอฟเฟกต์กดปุ่ม */
+}
+
+/* เมนูย่อย (Filling) */
+.dropdown-content {
+    display: none; /* ซ่อนไว้ก่อน */
+    position: absolute;
+    background-color: white;
+    width: 100%;      /* บังคับให้กว้างเท่ากับปุ่มเป๊ะๆ */
+    min-width: auto; /* ความกว้างเมนู */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-radius: 15px; /* มุมมน */
+    overflow: hidden; /* ตัดขอบรูป */
+    top: 100%; /* เว้นระยะห่างจากปุ่มนิดนึง */
+    z-index: 1;
+}
+
+/* ลิ้งก์ข้างใน */
+.dropdown-content a {
+    color: #333;
+    padding: 15px 20px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+/* เส้นคั่นเมนู */
+.dropdown-content hr {
+    margin: 0;
+    border: none;
+    border-top: 1px solid #eee;
+}
+
+/* --- เอฟเฟกต์ตอนชี้เมาส์ (Hover) --- */
+
+/* 1. เปลี่ยนสีพื้นหลังรายการเมื่อชี้ */
+.dropdown-content a:hover {
+    background-color: #FFF0F0;
+    color: #FF6B6B;
+    padding-left: 30px; /* ขยับข้อความไปขวานิดนึง เท่ๆ */
+}
+
+/* 2. แสดงเมนูออกมาเมื่อชี้ปุ่ม */
+.dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeIn 0.3s; /* ใส่ Animation ให้ค่อยๆ ปรากฏ */
+}
+
+/* 3. ปุ่มขยับนิดนึงตอนชี้ */
+.dropdown:hover .dropbtn {
+    transform: translateY(-2px);
+}
+
+/*: Animation การปรากฏ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

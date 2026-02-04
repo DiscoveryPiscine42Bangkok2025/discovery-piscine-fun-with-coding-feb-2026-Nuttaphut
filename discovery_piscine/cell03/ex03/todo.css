@@ -1,0 +1,113 @@
+/* todo.css - Modern Thai Style */
+
+body {
+    font-family: 'Kanit', sans-serif;
+    background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); /* พื้นหลังไล่สีฟ้าพาสเทล */
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* ให้กล่องอยู่ด้านบน ไม่กลางเป๊ะ เพื่อรองรับ list ยาวๆ */
+    padding-top: 60px;
+    box-sizing: border-box;
+}
+
+/* กล่องหลัก */
+.main-container {
+    background: rgba(255, 255, 255, 0.95);
+    width: 450px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    color: #4a4a4a;
+    font-weight: 500;
+}
+
+header p {
+    color: #888;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+/* ปุ่ม New */
+#newBtn {
+    background: linear-gradient(45deg, #6a11cb, #2575fc); /* สีม่วง-ฟ้า */
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-family: 'Kanit', sans-serif;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(37, 117, 252, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+#newBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 117, 252, 0.4);
+}
+
+#newBtn span {
+    font-size: 20px;
+    margin-right: 5px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+/* กล่องรายการ (ft_list) */
+#ft_list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* รายการแต่ละอัน */
+.todo-item {
+    background-color: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border-left: 6px solid #2575fc; /* แถบสีด้านซ้าย */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    text-align: left;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid #f0f0f0;
+    word-break: break-word; /* ตัดคำถ้ายาวเกิน */
+}
+
+.todo-item:hover {
+    background-color: #fff5f5; /* เปลี่ยนเป็นสีแดงอ่อนๆ */
+    border-left-color: #ff6b6b; /* แถบเปลี่ยนเป็นสีแดง */
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.15);
+}
+
+.todo-item::after {
+    content: '🗑️ ลบ';
+    float: right;
+    font-size: 12px;
+    color: #ff6b6b;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.todo-item:hover::after {
+    opacity: 1;
+}
+
+.footer-note {
+    margin-top: 30px;
+    font-size: 12px;
+    color: #bbb;
+}

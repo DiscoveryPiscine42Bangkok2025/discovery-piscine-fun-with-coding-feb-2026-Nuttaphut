@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Explode this balloon 🎈</title>
+    <style>
+        /* จัดหน้าจอเป็นท้องฟ้า */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #87CEEB, #E0F7FA); /* ท้องฟ้า */
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        /* ตัวลูกโป่ง (Balloon) */
+        #balloon {
+            width: 200px;
+            height: 200px;
+            background-color: red; /* สีพื้นฐาน (เปลี่ยนโดย JS) */
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            
+            /* เทคนิคทำ 3D: ใช้เงาด้านใน (Inset) สร้างมิติ */
+            box-shadow: inset -10px -10px 20px rgba(0,0,0,0.2), /* เงาด้านล่างขวา */
+                        inset 20px 20px 20px rgba(255,255,255,0.4), /* แสงด้านบนซ้าย */
+                        5px 10px 20px rgba(0,0,0,0.1); /* เงาตกกระทบพื้น */
+            
+            transition: width 0.2s, height 0.2s, background-color 0.2s; /* เอฟเฟกต์เปลี่ยนขนาดนุ่มๆ */
+            
+            /* ใส่ Animation ลอยตุ๊บป่อง */
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* แสงวิ้งๆ ตรงมุมซ้ายบน (Highlight) */
+        #balloon::before {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: 15%;
+            width: 20%;
+            height: 10%;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.6);
+            transform: rotate(-45deg);
+        }
+
+        /* เชือกลูกโป่ง (String) */
+        #balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -20%; /* ห้อยลงมาข้างล่าง */
+            left: 50%;
+            width: 2px;
+            height: 60px; /* ความยาวเชือก */
+            background-color: #555;
+            transform: translateX(-50%);
+            z-index: -1; /* ให้เชือกอยู่หลังลูกโป่ง */
+        }
+
+        /* ปมเชือกเล็กๆ */
+        .knot {
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 10px;
+            height: 8px;
+            background-color: inherit; /* สีเดียวกับลูกโป่ง */
+            transform: translateX(-50%);
+            border-radius: 2px;
+            z-index: 0;
+        }
+
+        /* Animation การลอย */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); } /* ลอยขึ้น */
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="balloon" onclick="clickBalloon()" onmouseleave="leaveBalloon()">
+        <div class="knot"></div>
+    </div>
+
+    <script>
+        // --- LOGIC เดิมตามโจทย์เป๊ะๆ ---
+        
+        var size = 200;
+        var colors = ['red', 'green', 'blue'];
+        var colorIndex = 0; // 0=แดง, 1=เขียว, 2=น้ำเงิน
+
+        function clickBalloon() {
+            var balloon = document.getElementById('balloon');
+            var knot = document.querySelector('.knot'); // เอาปมเชือกมาเปลี่ยนสีด้วย
+
+            size += 10;
+
+            if (size > 420) {
+                size = 200;
+                colorIndex = 0;
+                alert("Boom! 💥"); // (แถม) เด้งเตือนตอนระเบิด
+            } else {
+                colorIndex++;
+                if (colorIndex >= 3) colorIndex = 0;
+            }
+
+            updateBalloon(balloon, knot);
+        }
+
+        function leaveBalloon() {
+            var balloon = document.getElementById('balloon');
+            var knot = document.querySelector('.knot');
+
+            size -= 5;
+            if (size < 200) size = 200;
+
+            colorIndex--;
+            if (colorIndex < 0) colorIndex = 2;
+
+            updateBalloon(balloon, knot);
+        }
+
+        function updateBalloon(element, knotElement) {
+            element.style.width = size + 'px';
+            element.style.height = size + 'px';
+            
+            // เปลี่ยนสีทั้งลูกโป่งและปมเชือก
+            element.style.backgroundColor = colors[colorIndex];
+            knotElement.style.backgroundColor = colors[colorIndex];
+        }
+    </script>
+
+</body>
+</html>

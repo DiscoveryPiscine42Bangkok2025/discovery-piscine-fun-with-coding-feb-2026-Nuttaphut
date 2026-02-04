@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บันทึกสิ่งที่ต้องทำ 📝</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <header>
+            <h1>รายการสิ่งที่ต้องทำ 📌</h1>
+            <p>จัดการชีวิตให้ง่ายขึ้น...</p>
+        </header>
+        
+        <button id="newBtn" onclick="newTodo()">
+            <span>+</span> เพิ่มรายการใหม่
+        </button>
+
+        <div id="ft_list"></div>
+        
+        <div class="footer-note">
+            *คลิกที่รายการเพื่อลบออก (บันทึกอัตโนมัติ)
+        </div>
+    </div>
+
+    <script src="todo.js"></script>
+
+</body>
+</html>

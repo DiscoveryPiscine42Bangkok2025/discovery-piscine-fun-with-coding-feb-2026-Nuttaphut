@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เครื่องคิดเลขสุดล้ำ (Calculator)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* จัดสไตล์พื้นหลังและฟอนต์ */
+        body {
+            font-family: 'Kanit', sans-serif;
+            background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%); /* สีพาสเทลหวานๆ */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* กล่องเครื่องคิดเลข */
+        .calculator-card {
+            background-color: rgba(255, 255, 255, 0.9); /* สีขาวโปร่งแสงนิดๆ */
+            backdrop-filter: blur(10px); /* เบลอฉากหลัง (Glassmorphism) */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        h2 {
+            color: #ff6b6b;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        /* กล่อง Input และ Select */
+        input[type="text"], select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: 'Kanit', sans-serif;
+            box-sizing: border-box; /* ไม่ให้กล่องล้น */
+            transition: all 0.3s;
+            text-align: center;
+            color: #555;
+        }
+
+        /* เอฟเฟกต์ตอนกดช่อง */
+        input[type="text"]:focus, select:focus {
+            border-color: #ff9a9e;
+            outline: none;
+            box-shadow: 0 0 8px rgba(255, 154, 158, 0.3);
+        }
+
+        /* ปุ่มกด */
+        input[type="submit"] {
+            width: 100%;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Kanit', sans-serif;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        input[type="submit"]:hover {
+            transform: translateY(-3px); /* ลอยขึ้นนิดนึง */
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+            background: linear-gradient(45deg, #ff6b6b, #ff9a9e);
+        }
+
+        input[type="submit"]:active {
+            transform: scale(0.95); /* กดยุบลง */
+        }
+
+        /* ข้อความเล็กๆ ด้านล่าง */
+        .footer-note {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator-card">
+        <h2>🧮 เครื่องคิดเลข</h2>
+        
+        <input type="text" id="leftMember" placeholder="ใส่ตัวเลขจำนวนเต็ม (>=0)">
+        
+        <select id="operator">
+            <option value="+">➕ บวก (+)</option>
+            <option value="-">➖ ลบ (-)</option>
+            <option value="*">✖️ คูณ (*)</option>
+            <option value="/">➗ หาร (/)</option>
+            <option value="%">🍕 หารเอาเศษ (%)</option>
+        </select>
+        
+        <input type="text" id="rightMember" placeholder="ใส่ตัวเลขจำนวนเต็ม (>=0)">
+        
+        <input type="submit" value="Try me!" onclick="calculate()">
+
+        <div class="footer-note">อย่าเปิดทิ้งไว้นานเกิน 30 วิ นะ... เตือนแล้วนะ!</div>
+    </div>
+
+    <script>
+        // --- LOGIC ---
+
+        // 1. ตัวนับเวลา 30 วินาที
+        setInterval(function() {
+            alert("หายไปไหนของเธอ!!!");
+        }, 30000);
+
+        // 2. ฟังก์ชันคำนวณ
+        function calculate() {
+            var leftInput = document.getElementById("leftMember").value;
+            var rightInput = document.getElementById("rightMember").value;
+            var op = document.getElementById("operator").value;
+
+            // แปลงเป็นจำนวนเต็ม
+            var leftNum = parseInt(leftInput);
+            var rightNum = parseInt(rightInput);
+
+            // --- ตรวจสอบเงื่อนไข (Validation) ---
+            
+            // 1. เช็กว่าช่องว่างไหม หรือไม่ใช่ตัวเลข หรือเลขติดลบ
+            if (leftInput === "" || rightInput === "" || isNaN(leftNum) || isNaN(rightNum) || leftNum < 0 || rightNum < 0) {
+                alert("Error :(");
+                console.log("Error :(");
+                return;
+            }
+
+            // --- คำนวณ ---
+            var result;
+            
+            if (op == '+') {
+                result = leftNum + rightNum;
+            } else if (op == '-') {
+                result = leftNum - rightNum;
+            } else if (op == '*') {
+                result = leftNum * rightNum;
+            } else if (op == '/') {
+                // เช็กหาร 0
+                if (rightNum == 0) {
+                    alert("It's over 9000!");
+                    console.log("It's over 9000!");
+                    return;
+                }
+                result = leftNum / rightNum;
+            } else if (op == '%') {
+                // เช็ก Mod 0
+                if (rightNum == 0) {
+                    alert("It's over 9000!");
+                    console.log("It's over 9000!");
+                    return;
+                }
+                result = leftNum % rightNum;
+            }
+
+            // --- แสดงผล ---
+            alert(result);
+            console.log(result);
+        }
+    </script>
+
+</body>
+</html>

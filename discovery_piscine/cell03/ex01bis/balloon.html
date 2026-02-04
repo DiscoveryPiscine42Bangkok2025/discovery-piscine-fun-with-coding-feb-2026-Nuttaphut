@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Balloon 🎈</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f0f0; }
+        #balloon { width: 200px; height: 200px; background-color: red; border-radius: 50%; cursor: pointer; transition: 0.2s; box-shadow: inset -10px -10px 20px rgba(0,0,0,0.2); }
+    </style>
+</head>
+<body>
+
+    <div id="balloon"></div>
+
+    <script>
+        $(document).ready(function() {
+            let size = 200;
+            let colors = ['red', 'green', 'blue'];
+            let colorIndex = 0;
+
+            // เมื่อคลิก
+            $("#balloon").click(function() {
+                size += 10;
+                if (size > 420) {
+                    size = 200;
+                    colorIndex = 0;
+                } else {
+                    colorIndex++;
+                    if (colorIndex >= 3) colorIndex = 0;
+                }
+                updateBalloon();
+            });
+
+            // เมื่อเมาส์ออก
+            $("#balloon").mouseleave(function() {
+                size -= 5;
+                if (size < 200) size = 200;
+                
+                colorIndex--;
+                if (colorIndex < 0) colorIndex = 2;
+                
+                updateBalloon();
+            });
+
+            function updateBalloon() {
+                // ใช้ .css() ของ jQuery
+                $("#balloon").css({
+                    "width": size + "px",
+                    "height": size + "px",
+                    "background-color": colors[colorIndex]
+                });
+            }
+        });
+    </script>
+</body>
+</html>

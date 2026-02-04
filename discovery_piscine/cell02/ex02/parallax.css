@@ -1,0 +1,71 @@
+/* parallax.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Tahoma', sans-serif; /* ใช้ฟอนต์มาตรฐานที่อ่านไทยง่าย */
+}
+
+/* คลาสหลักสำหรับทำ Parallax */
+.parallax {
+    min-height: 500px; /* ความสูงของรูปภาพ */
+
+    /* หัวใจสำคัญ: สั่งให้รูปพื้นหลัง "เกาะติด" หน้าจอ */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /* จัดข้อความกึ่งกลาง */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* รูปที่ 1: วัดอรุณฯ (กรุงเทพ) */
+.bg-img1 {
+    background-image: url('https://images.unsplash.com/photo-1528181304800-259b08848526?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
+}
+
+/* รูปที่ 2: ทะเลกระบี่ (ภาคใต้) */
+.bg-img2 {
+    background-image: url('https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
+}
+
+/* กล่องสีดำตรงกลาง */
+.static-block {
+    height: 400px;
+    background-color: #111; /* สีดำเกือบสนิท */
+    color: white;
+    
+    /* จัดข้อความกึ่งกลาง */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* กล่องข้อความบนรูปภาพ */
+.text-box {
+    background-color: rgba(0, 0, 0, 0.6); /* พื้นหลังดำโปร่งใส */
+    color: white;
+    padding: 25px;
+    font-size: 28px;
+    letter-spacing: 2px;
+    border: 4px solid white;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* หัวข้อในกล่องดำ */
+h1 {
+    margin: 0 0 10px 0;
+    font-size: 45px;
+    color: #FFD700; /* สีทอง */
+}
+
+p {
+    font-size: 18px;
+    color: #ddd;
+}

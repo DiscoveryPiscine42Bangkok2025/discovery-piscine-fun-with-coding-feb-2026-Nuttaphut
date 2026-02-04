@@ -1,0 +1,118 @@
+/* card.css - Tae 007 Theme (Final Version) */
+
+/* นำเข้าฟอนต์ */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap');
+
+body {
+    background-color: #1a1a1a; /* พื้นหลังจอ: สีดำด้าน */
+    font-family: 'Kanit', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* ลายตารางจางๆ ที่พื้นหลัง */
+    background-image: radial-gradient(#333 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* กล่องการ์ด */
+.card-container {
+    background-color: #2d2d2d; /* พื้นการ์ด: สีเทาเข้ม */
+    color: #fffdfd; /* บังคับตัวหนังสือสีขาว */
+    width: 340px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); /* เงาสีแดง */
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 25px;
+    border: 1px solid #444;
+}
+
+/* แถบหัวข้อด้านบน */
+.card-header {
+    background: linear-gradient(90deg, #8B0000, #ff0000); /* ไล่สีแดง */
+    color: #ffffff;
+    padding: 20px;
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* --- ตารางล่องหน --- */
+table {
+    width: 100%;
+    border-collapse: collapse; /* รวมขอบตาราง */
+    margin-top: 25px;
+}
+
+td {
+    text-align: center;
+    padding: 5px;
+    border: none; /* ลบขอบตารางทิ้ง */
+}
+
+/* รูปโปรไฟล์ */
+.profile-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #FFD700; /* กรอบทอง */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); /* เรืองแสงทอง */
+    background-color: #fff;
+}
+
+/* ชื่อ  */
+.login-name {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff !important; /* บังคับขาว */
+    margin: 10px 0 5px 0;
+    text-shadow: 2px 2px 0px #000;
+}
+
+/* คำอธิบาย */
+.description {
+    color: #fffdfd; /* สีขาวควันบุหรี่ */
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* ไอคอน Social */
+.social-icons img {
+    width: 35px;
+    height: 35px;
+    margin: 10px 12px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    filter: invert(1) brightness(2); /* ปรับไอคอนให้เป็นสีขาว */
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
+}
+
+/* ปุ่มกด (Contact) */
+.contact-btn {
+    background-color: #FFD700; /* สีทอง */
+    color: #000000; /* ตัวหนังสือดำ */
+    border: none;
+    padding: 12px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s;
+}
+
+.contact-btn:hover {
+    background-color: #fff;
+    color: #d32f2f;
+    transform: translateY(-2px);
+}

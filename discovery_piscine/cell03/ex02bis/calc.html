@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Calculator 🧮</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* (ใช้ Style เดิมแบบสวยๆ ได้เลยครับ ผมย่อให้นะ) */
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: linear-gradient(135deg, #FF9A9E, #FECFEF); }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; }
+        input, select { padding: 10px; margin: 5px; border-radius: 5px; border: 1px solid #ddd; }
+        input[type="submit"] { background: #ff6b6b; color: white; border: none; cursor: pointer; width: 100%; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>🧮 Calculator (jQuery)</h2>
+        <input type="text" id="leftMember" placeholder="จำนวนเต็ม">
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input type="text" id="rightMember" placeholder="จำนวนเต็ม">
+        <input type="submit" id="btnCalc" value="Try me!">
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // เตือนทุก 30 วิ
+            setInterval(function() { alert("Please, use me..."); }, 30000);
+
+            // เมื่อกดปุ่ม
+            $("#btnCalc").click(function() {
+                let leftStr = $("#leftMember").val(); // .val() คือดึงค่า input
+                let rightStr = $("#rightMember").val();
+                let op = $("#operator").val();
+
+                let l = parseInt(leftStr);
+                let r = parseInt(rightStr);
+
+                // Validation
+                if (leftStr === "" || rightStr === "" || isNaN(l) || isNaN(r) || l < 0 || r < 0) {
+                    alert("Error :(");
+                    console.log("Error :(");
+                    return;
+                }
+
+                // Calculation
+                let result;
+                if (op === '/' || op === '%') {
+                    if (r === 0) {
+                        alert("It's over 9000!");
+                        console.log("It's over 9000!");
+                        return;
+                    }
+                }
+
+                if (op === '+') result = l + r;
+                else if (op === '-') result = l - r;
+                else if (op === '*') result = l * r;
+                else if (op === '/') result = l / r;
+                else if (op === '%') result = l % r;
+
+                alert(result);
+                console.log(result);
+            });
+        });
+    </script>
+</body>
+</html>
