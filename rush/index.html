@@ -3,215 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>พรรครัชศูนย์ศูนย์ - การเลือกตั้ง</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;900&display=swap" rel="stylesheet">
-
-    <style>
-        /* ================= CSS ================= */
-        
-        body {
-            font-family: 'Kanit', sans-serif;
-            background-color: #f0f0f0;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* พื้นหลังเฉียง ส้ม-น้ำเงิน */
-        .bg-election {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(115deg, #FF6600 50%, #002D63 50%);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .party-header {
-            text-align: center;
-            color: white;
-            text-shadow: 2px 2px 0 #000;
-            padding: 40px 0;
-        }
-
-        .party-title {
-            font-size: 4rem; 
-            font-weight: 900;
-            margin: 0;
-            text-transform: uppercase;
-        }
-        
-        .party-subtitle {
-            font-size: 1.5rem;
-            margin-top: 10px;
-            font-weight: 300;
-        }
-
-        /* จัดระเบียบการ์ดให้เรียงกัน */
-        .candidates-grid {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .candidate-card {
-            background: white;
-            border: 5px solid white;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            overflow: hidden;
-            transition: transform 0.3s, border-color 0.3s;
-            position: relative;
-            width: 350px; /* กำหนดความกว้างการ์ด */
-            text-align: center;
-        }
-
-        .candidate-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            border-color: #FF6600;
-        }
-
-        .candidate-img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            object-position: top;
-            border-bottom: 5px solid #FF6600;
-            background-color: #ddd; /* สีกันไว้กรณีรูปไม่ขึ้น */
-        }
-
-        .candidate-info {
-            padding: 20px;
-        }
-
-        .candidate-info h2 {
-            margin: 0 0 10px 0;
-            font-size: 2rem;
-            color: #002D63;
-        }
-
-        .candidate-number {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #FF6600;
-            color: white;
-            font-size: 3rem;
-            font-weight: 900;
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            box-shadow: 5px 5px 0px #002D63;
-            z-index: 10;
-        }
-
-        .btn-vote {
-            display: block;
-            background-color: #002D63;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-            border: none;
-            width: 100%;
-            padding: 15px 0;
-            transition: all 0.2s;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .btn-vote:hover {
-            background-color: #FF6600;
-            color: white;
-        }
-
-        .x-mark {
-            font-size: 1.5rem;
-            margin-right: 10px;
-            color: #FF6600;
-        }
-
-        .btn-vote:hover .x-mark {
-            color: white;
-        }
-
-        /* Media Query สำหรับมือถือ */
-        @media (max-width: 768px) {
-            .bg-election {
-                background: linear-gradient(180deg, #FF6600 50%, #002D63 50%);
-            }
-            .party-title {
-                font-size: 2.5rem;
-            }
-            .candidates-grid {
-                flex-direction: column;
-                align-items: center;
-            }
-            .candidate-card {
-                width: 100%;
-                max-width: 350px;
-            }
-        }
-    </style>
+    <title>Election Center - พรรคนี้ไม่ได้นอน</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="election-body">
 
     <div class="bg-election"></div>
 
-    <div class="container">
+    <div class="snap-container">
         
-        <div class="party-header">
-            <h1 class="party-title">พรรครัชศูนย์ศูนย์</h1>
-            <p class="party-subtitle">เลือกคนที่คุณชอบ กากบาทคนที่คุณใช่!</p>
-        </div>
-        
-        <div class="candidates-grid">
-            
-            <div class="candidate-card">
-                <div class="candidate-number">2</div>
-                
-                <img src="https://www.khaosod.co.th/wpapp/uploads/2022/10/%E0%B9%80%E0%B8%95%E0%B9%89-3.jpg" alt="Nuttaphut" class="candidate-img">
-                
-                <div class="candidate-info">
-                    <h2>Nuttaphut</h2>
-                    <p>เบอร์ 2</p>
-                </div>
-                
-                <a href="portfolio_2.html" class="btn-vote">
-                    <span class="x-mark">✖</span> ดูพอร์ต
-                </a>
+        <section class="snap-section">
+            <div class="party-header reveal">
+                <h1 class="party-title">พรรคนี้ไม่ได้นอน</h1>
+                <p class="party-subtitle">เลือกคนที่คุณชอบ กากบาทคนที่คุณใช่!</p>
             </div>
+        </section>
 
-            <div class="candidate-card">
-                <div class="candidate-number">1</div>
-                
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQP4V-HXkGXv5njB0fclxyQSX9KoJs0q6LBA&s" alt="Tripob" class="candidate-img">
-                
-                <div class="candidate-info">
-                    <h2>Tripob</h2>
-                    <p>เบอร์ 1</p>
+        <section class="snap-section">
+            <div class="container pb-5">
+                <div class="row justify-content-center g-4">
+                    
+                    <div class="col-md-6 col-lg-4 reveal delay-1">
+                        <div class="candidate-card">
+                            <div class="candidate-number">1</div>
+                            <img src="https://static.thairath.co.th/media/dFQROr7oWzulq5Fa6rV0yap4WaofCPTOhaxIbZ2ItHYO2QG3DllHOPGMyXEHKAhEhiP.jpg" alt="Nuttaphut" class="candidate-img">
+                            <div class="p-4 text-center">
+                                <h2 class="candidate-info">Nuttaphut Taweesang</h2>
+                                <p class="text-muted">Candidate No.1</p>
+                            </div>
+                            <a href="port1_nuttaphut.html" class="btn-vote">❌ ดูพอร์ตโฟลิโอ</a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 reveal delay-2">
+                        <div class="candidate-card">
+                            <div class="candidate-number">2</div>
+                            <img src="https://storage-wp.thaipost.net/2024/08/warong-5.jpg" alt="Tripob" class="candidate-img">
+                            <div class="p-4 text-center">
+                                <h2 class="candidate-info">Tripob Namthip</h2>
+                                <p class="text-muted">Candidate No.2</p>
+                            </div>
+                            <a href="port2_tripob.html" class="btn-vote">❌ ดูพอร์ตโฟลิโอ</a>
+                        </div>
+                    </div>
+
                 </div>
-
-                <a href="portfolio_1.html" class="btn-vote">
-                    <span class="x-mark">✖</span> ดูพอร์ต
-                </a>
             </div>
-
-        </div>
+        </section>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    // ลบ class ออกเพื่อให้เล่นอนิเมชันใหม่เมื่อเลื่อนกลับขึ้นไป (ถ้าต้องการ)
+                    entry.target.classList.remove('show');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
 </body>
 </html>
