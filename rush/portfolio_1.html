@@ -9,29 +9,38 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <style>
-        body { font-family: 'Kanit', sans-serif; background-color: #f8f9fa; padding-top: 70px; }
+        body { font-family: 'Kanit', sans-serif; background-color: #f0f2f5; padding-top: 70px; }
         
         /* Navbar สีเดียวกับพรรค */
         .navbar { background-color: #002D63; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .nav-link { color: white !important; margin-right: 15px; font-weight: 500; }
         .nav-link:hover { color: #FF6600 !important; }
 
-        section { padding: 60px 0; border-bottom: 1px solid #e9ecef; }
-        h2 { color: #002D63; font-weight: 700; border-left: 5px solid #FF6600; padding-left: 15px; margin-bottom: 30px; }
-        h4 { color: #FF6600; font-weight: 600; }
+        section { padding: 60px 0; }
+        h2 { color: #002D63; font-weight: 700; text-transform: uppercase; margin-bottom: 30px; }
         
+        /* Header Style แบบใหม่ (เหมือน Nuttaphut) */
+        .header-bg {
+            background: linear-gradient(135deg, #002D63 0%, #004085 100%);
+            color: white; padding: 80px 0; text-align: center;
+        }
         .profile-img {
-            width: 250px; height: 250px; object-fit: cover;
-            border-radius: 50%; border: 5px solid #FF6600;
-            margin-bottom: 20px; background-color: #ddd;
+            width: 220px; height: 220px; object-fit: cover;
+            border-radius: 15px; border: 5px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            background-color: #ddd;
         }
         
-        .skill-badge {
-            background-color: #002D63; color: white;
-            padding: 8px 15px; border-radius: 20px; margin: 5px;
-            display: inline-block;
+        /* Timeline Style สำหรับ Experience/Education */
+        .timeline-item {
+            border-left: 3px solid #FF6600; padding-left: 20px; margin-bottom: 30px; position: relative;
         }
-
+        .timeline-item::before {
+            content: ''; position: absolute; left: -9px; top: 0;
+            width: 15px; height: 15px; background: #FF6600; border-radius: 50%;
+        }
+        
         @media (max-width: 991px) {
             .navbar-collapse { background: #002D63; padding: 10px; }
         }
@@ -47,90 +56,101 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
                     <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
                     <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section id="about" class="text-center bg-white">
+    <section id="profile" class="header-bg">
         <div class="container">
-            <img src="https://www.khaosod.co.th/wpapp/uploads/2022/10/%E0%B9%80%E0%B8%95%E0%B9%89-3.jpg" onerror="this.src='https://via.placeholder.com/250'" alt="Tripob Namthip" class="profile-img">
-            <h1 class="display-4 fw-bold text-dark">TRIPOB NAMTHIP</h1>
-            <p class="lead text-secondary">STRUCTURAL ENGINEER (Candidate No.1)</p>
-            <div class="row justify-content-center mt-4">
-                <div class="col-md-8">
-                    <p>I am passionate about transforming ideas into practical structures, with a focus on structural design, surveying, and construction management. I thrive on challenges that foster creative problem-solving and teamwork.</p>
-                </div>
+            <img src="assets/tripob.jpg" onerror="this.src='https://via.placeholder.com/220?text=Tripob'" alt="Tripob Namthip" class="profile-img">
+            <h1 class="display-4 fw-bold">TRIPOB NAMTHIP</h1>
+            <p class="lead">STRUCTURAL ENGINEER (Candidate No.1)</p>
+            <div class="mt-4 w-75 mx-auto">
+                <p class="fw-light">"I am passionate about transforming ideas into practical structures, with a focus on structural design, surveying, and construction management. I thrive on challenges that foster creative problem-solving and teamwork."</p>
             </div>
         </div>
     </section>
 
-    <section id="education">
-        <div class="container">
-            <h2>🎓 Education</h2>
-            <div class="row">
-                <div class="col-md-12 mb-4">
-                    <h4>King Mongkut's Institute of Technology Ladkrabang</h4>
-                    <p class="text-muted">2022 - Present | GPA: 3.95</p>
-                    <p>Bachelor of Engineering in Civil Engineering</p>
-                </div>
-                <div class="col-md-12">
-                    <h4>Visuttharangsi Kanchanaburi School</h4>
-                    <p class="text-muted">2019 - 2022 | GPA: 3.98</p>
-                    <p>Mathematics-Science program</p>
-                </div>
-            </div>
+    <section id="education" class="container">
+        <h2>🎓 Education</h2>
+        
+        <div class="timeline-item">
+            <h4>King Mongkut's Institute of Technology Ladkrabang</h4>
+            <p class="text-secondary">2022 - Present | GPA: 3.95</p>
+            <p>Bachelor of Engineering in Civil Engineering</p>
+        </div>
+
+        <div class="timeline-item">
+            <h4>Visuttharangsi Kanchanaburi School</h4>
+            <p class="text-secondary">2019 - 2022 | GPA: 3.98</p>
+            <p>Mathematics-Science program</p>
         </div>
     </section>
 
-    <section id="experience" class="bg-white">
-        <div class="container">
-            <h2>🛠 Work Experience</h2>
-            <div class="card mb-3 border-0 shadow-sm">
-                <div class="card-body">
-                    <h4>Construction Team Leader</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">EngiNurse 34 (KMITL x MU) | Nov 2024</h6>
-                    <p class="card-text">Led the design and construction of a 1.5m x 60m steel tube fence. Supervised welding, assembly, and installation while managing schedules and delegating tasks.</p>
-                </div>
-            </div>
-            <div class="card border-0 shadow-sm">
-                <div class="card-body">
-                    <h4>Surveying Teacher Assistant</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">Dept. of Civil Engineering | Jul-Oct 2024</h6>
-                    <p class="card-text">Assisted professors in teaching surveying with Total Station, Theodolite, and Auto Level. Conducted field demonstrations and graded assignments.</p>
-                </div>
-            </div>
+    <section id="experience" class="container">
+        <h2>🚀 Work Experience</h2>
+        
+        <div class="timeline-item">
+            <h4>Construction Team Leader</h4>
+            <p class="text-secondary">EngiNurse 34 (KMITL x MU) | Nov 2024</p>
+            <p>Led the design and construction of a 1.5m x 60m steel tube fence. Supervised welding, assembly, and installation while managing schedules and delegating tasks.</p>
+        </div>
+
+        <div class="timeline-item">
+            <h4>Surveying Teacher Assistant</h4>
+            <p class="text-secondary">Dept. of Civil Engineering | Jul-Oct 2024</p>
+            <p>Assisted professors in teaching surveying with Total Station, Theodolite, and Auto Level. Conducted field demonstrations and graded assignments.</p>
         </div>
     </section>
 
-    <section id="skills">
+    <section id="skills" class="bg-white">
         <div class="container">
             <h2>⚡ Skills & Tools</h2>
-            <div class="mb-4">
-                <h5>Hard Skills</h5>
-                <span class="skill-badge">Structural Analysis</span>
-                <span class="skill-badge">Cost Estimation</span>
-                <span class="skill-badge">BIM</span>
-                <span class="skill-badge">Surveying</span>
-            </div>
-            <div>
-                <h5>Software</h5>
-                <span class="skill-badge bg-warning text-dark">AutoCAD</span>
-                <span class="skill-badge bg-warning text-dark">Revit</span>
-                <span class="skill-badge bg-warning text-dark">ETABS</span>
-                <span class="skill-badge bg-warning text-dark">ANSYS</span>
-                <span class="skill-badge bg-warning text-dark">Microsoft 365</span>
+            <div class="row text-center">
+                <div class="col-md-4 mb-3">
+                    <div class="p-4 border rounded shadow-sm h-100">
+                        <h4 class="text-primary">Hard Skills</h4>
+                        <ul class="list-unstyled">
+                            <li>Structural Analysis</li>
+                            <li>Cost Estimation</li>
+                            <li>BIM</li>
+                            <li>Surveying</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="p-4 border rounded shadow-sm h-100">
+                        <h4 class="text-danger">Software</h4>
+                        <ul class="list-unstyled">
+                            <li>AutoCAD / Revit</li>
+                            <li>ETABS / ANSYS</li>
+                            <li>Microsoft 365</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="p-4 border rounded shadow-sm h-100">
+                        <h4 class="text-success">Soft Skills</h4>
+                        <ul class="list-unstyled">
+                            <li>Creative Problem-Solving</li>
+                            <li>Teamwork & Leadership</li>
+                            <li>Construction Management</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="bg-dark text-white">
-        <div class="container text-center">
+    <section id="contact" class="bg-dark text-white text-center">
+        <div class="container">
             <h2 class="text-white border-0">📞 Contact Me</h2>
             <div class="row mt-4">
                 <div class="col-md-4">
