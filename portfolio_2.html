@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Nuttaphut Taweesang</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <style>
+        body { font-family: 'Kanit', sans-serif; background-color: #f0f2f5; padding-top: 70px; }
+        
+        /* Navbar */
+        .navbar { background-color: #002D63; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .nav-link { color: white !important; margin-right: 15px; font-weight: 500; }
+        .nav-link:hover { color: #FF6600 !important; }
+
+        section { padding: 60px 0; }
+        h2 { color: #002D63; font-weight: 700; text-transform: uppercase; margin-bottom: 30px; }
+        
+        .header-bg {
+            background: linear-gradient(135deg, #002D63 0%, #0056b3 100%);
+            color: white; padding: 80px 0; text-align: center;
+        }
+        .profile-img {
+            width: 220px; height: 220px; object-fit: cover;
+            border-radius: 15px; border: 5px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            background-color: #ddd; /* สีรองพื้นถ้ารูปยังไม่มา */
+        }
+        
+        .timeline-item {
+            border-left: 3px solid #FF6600; padding-left: 20px; margin-bottom: 30px; position: relative;
+        }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -9px; top: 0;
+            width: 15px; height: 15px; background: #FF6600; border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white fw-bold" href="rush.html">⬅ Back to Hub</a>
+            <button class="navbar-toggler bg-white" type="button" id="menu-btn">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="profile" class="header-bg">
+        <div class="container">
+            <img src="assets/nuttaphut.jpg" onerror="this.src='https://via.placeholder.com/220?text=Photo'" alt="Nuttaphut" class="profile-img">
+            <h1 class="display-4 fw-bold">Nuttaphut Taweesang</h1>
+            <p class="lead">Civil Engineering Student (KMITL)</p>
+            <div class="mt-4 w-75 mx-auto">
+                <p class="fw-light">"I aim to enhance my skills in civil engineering, focusing on construction supervision and project management. [cite_start]Eager to contribute effectively to team operations." [cite: 88, 89]</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="container">
+        <h2>🚀 Experience & Activities</h2>
+        
+        <div class="timeline-item">
+            <h4>Site Visit: King Mongkut's Hospital</h4>
+            <p class="text-secondary">Civil Engineering Practices</p>
+            <p>Observed reinforced concrete construction and utility systems. [cite_start]Learned site management practices with a focus on safety and collaboration among engineers. [cite: 91, 92]</p>
+        </div>
+
+        <div class="timeline-item">
+            <h4>Thai Make Train Project</h4>
+            <p class="text-secondary">Structural Integrity Inspection</p>
+            <p>Performed structural inspections to assess strength and safety. [cite_start]Participated in load testing and modal tests to analyze vibration behavior. [cite: 95, 96]</p>
+        </div>
+
+        <div class="timeline-item">
+            <h4>Teaching Assistant (Planmai Camp #2)</h4>
+            <p class="text-secondary">Concrete Technology</p>
+            <p>Developed teaching materials and delivered lectures. [cite_start]Taught high school students how to conduct material compression tests. [cite: 98, 99]</p>
+        </div>
+    </section>
+
+    <section id="skills" class="bg-white">
+        <div class="container">
+            <h2>💡 Skills</h2>
+            <div class="row text-center">
+                <div class="col-md-4 mb-3">
+                    <div class="p-4 border rounded shadow-sm h-100">
+                        <h4 class="text-primary">Technical</h4>
+                        <ul class="list-unstyled">
+                            [cite_start]<li>Construction Technology [cite: 74]</li>
+                            [cite_start]<li>Cost Estimation [cite: 75]</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="p-4 border rounded shadow-sm h-100">
+                        <h4 class="text-danger">Software</h4>
+                        <ul class="list-unstyled">
+                            [cite_start]<li>Autodesk AutoCAD (Good) [cite: 77]</li>
+                            [cite_start]<li>Microsoft Office (Good) [cite: 78]</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="p-4 border rounded shadow-sm h-100">
+                        <h4 class="text-success">Soft Skills</h4>
+                        <ul class="list-unstyled">
+                            [cite_start]<li>Time Management [cite: 80]</li>
+                            [cite_start]<li>Teamwork & Adaptability [cite: 81, 82]</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function(){
+            $("#menu-btn").click(function(){
+                $("#navbarNav").slideToggle();
+            });
+        });
+    </script>
+</body>
+</html>
