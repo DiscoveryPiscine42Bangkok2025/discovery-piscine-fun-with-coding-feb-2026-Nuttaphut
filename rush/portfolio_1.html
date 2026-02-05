@@ -9,17 +9,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <style>
-        body { font-family: 'Kanit', sans-serif; background-color: #f8f9fa; padding-top: 70px; /* เผื่อพื้นที่ให้ Navbar */ }
+        body { font-family: 'Kanit', sans-serif; background-color: #f8f9fa; padding-top: 70px; }
         
-        /* Sticky Navbar Styling */
-        .navbar {
-            background-color: #002D63; /* สีน้ำเงินพรรค */
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+        /* Navbar สีเดียวกับพรรค */
+        .navbar { background-color: #002D63; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .nav-link { color: white !important; margin-right: 15px; font-weight: 500; }
-        .nav-link:hover { color: #FF6600 !important; } /* สีส้มตอนชี้ */
+        .nav-link:hover { color: #FF6600 !important; }
 
-        /* Section Styling */
         section { padding: 60px 0; border-bottom: 1px solid #e9ecef; }
         h2 { color: #002D63; font-weight: 700; border-left: 5px solid #FF6600; padding-left: 15px; margin-bottom: 30px; }
         h4 { color: #FF6600; font-weight: 600; }
@@ -27,7 +23,7 @@
         .profile-img {
             width: 250px; height: 250px; object-fit: cover;
             border-radius: 50%; border: 5px solid #FF6600;
-            margin-bottom: 20px;
+            margin-bottom: 20px; background-color: #ddd;
         }
         
         .skill-badge {
@@ -36,7 +32,6 @@
             display: inline-block;
         }
 
-        /* Mobile Menu */
         @media (max-width: 991px) {
             .navbar-collapse { background: #002D63; padding: 10px; }
         }
@@ -46,7 +41,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand text-white fw-bold" href="index.html>⬅ Back to Hub</a>
+            <a class="navbar-brand text-white fw-bold" href="index.html">⬅ Back to Hub</a>
             <button class="navbar-toggler bg-white" type="button" id="menu-btn">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -64,9 +59,9 @@
 
     <section id="about" class="text-center bg-white">
         <div class="container">
-            <img src="https://via.placeholder.com/250" alt="Tripob Namthip" class="profile-img">
+            <img src="assets/tripob.jpg" onerror="this.src='https://via.placeholder.com/250'" alt="Tripob Namthip" class="profile-img">
             <h1 class="display-4 fw-bold text-dark">TRIPOB NAMTHIP</h1>
-            <p class="lead text-secondary">STRUCTURAL ENGINEER</p>
+            <p class="lead text-secondary">STRUCTURAL ENGINEER (Candidate No.1)</p>
             <div class="row justify-content-center mt-4">
                 <div class="col-md-8">
                     <p>I am passionate about transforming ideas into practical structures, with a focus on structural design, surveying, and construction management. I thrive on challenges that foster creative problem-solving and teamwork.</p>

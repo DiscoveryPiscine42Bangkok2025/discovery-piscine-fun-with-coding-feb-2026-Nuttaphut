@@ -11,7 +11,7 @@
     <style>
         body { font-family: 'Kanit', sans-serif; background-color: #f0f2f5; padding-top: 70px; }
         
-        /* Navbar */
+        /* Navbar สีเดียวกับพรรค */
         .navbar { background-color: #002D63; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .nav-link { color: white !important; margin-right: 15px; font-weight: 500; }
         .nav-link:hover { color: #FF6600 !important; }
@@ -20,7 +20,7 @@
         h2 { color: #002D63; font-weight: 700; text-transform: uppercase; margin-bottom: 30px; }
         
         .header-bg {
-            background: linear-gradient(135deg, #002D63 0%, #0056b3 100%);
+            background: linear-gradient(135deg, #002D63 0%, #004085 100%);
             color: white; padding: 80px 0; text-align: center;
         }
         .profile-img {
@@ -28,7 +28,7 @@
             border-radius: 15px; border: 5px solid white;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             margin-bottom: 20px;
-            background-color: #ddd; /* สีรองพื้นถ้ารูปยังไม่มา */
+            background-color: #ddd;
         }
         
         .timeline-item {
@@ -37,6 +37,10 @@
         .timeline-item::before {
             content: ''; position: absolute; left: -9px; top: 0;
             width: 15px; height: 15px; background: #FF6600; border-radius: 50%;
+        }
+        
+        @media (max-width: 991px) {
+            .navbar-collapse { background: #002D63; padding: 10px; }
         }
     </style>
 </head>
@@ -60,11 +64,11 @@
 
     <section id="profile" class="header-bg">
         <div class="container">
-            <img src="assets/nuttaphut.jpg" onerror="this.src='https://via.placeholder.com/220?text=Photo'" alt="Nuttaphut" class="profile-img">
+             <img src="assets/nuttaphut.jpg" onerror="this.src='https://via.placeholder.com/220?text=Photo'" alt="Nuttaphut" class="profile-img">
             <h1 class="display-4 fw-bold">Nuttaphut Taweesang</h1>
-            <p class="lead">Civil Engineering Student (KMITL)</p>
+            <p class="lead">Civil Engineering Student (KMITL) - Candidate No.2</p>
             <div class="mt-4 w-75 mx-auto">
-                <p class="fw-light">"I aim to enhance my skills in civil engineering, focusing on construction supervision and project management. [cite_start]Eager to contribute effectively to team operations." [cite: 88, 89]</p>
+                <p class="fw-light">"I aim to enhance my skills in civil engineering, focusing on construction supervision and project management. Eager to contribute effectively to team operations."</p>
             </div>
         </div>
     </section>
@@ -75,19 +79,19 @@
         <div class="timeline-item">
             <h4>Site Visit: King Mongkut's Hospital</h4>
             <p class="text-secondary">Civil Engineering Practices</p>
-            <p>Observed reinforced concrete construction and utility systems. [cite_start]Learned site management practices with a focus on safety and collaboration among engineers. [cite: 91, 92]</p>
+            <p>Observed reinforced concrete construction and utility systems. Learned site management practices with a focus on safety and collaboration among engineers.</p>
         </div>
 
         <div class="timeline-item">
             <h4>Thai Make Train Project</h4>
             <p class="text-secondary">Structural Integrity Inspection</p>
-            <p>Performed structural inspections to assess strength and safety. [cite_start]Participated in load testing and modal tests to analyze vibration behavior. [cite: 95, 96]</p>
+            <p>Performed structural inspections to assess strength and safety. Participated in load testing and modal tests to analyze vibration behavior.</p>
         </div>
 
         <div class="timeline-item">
             <h4>Teaching Assistant (Planmai Camp #2)</h4>
             <p class="text-secondary">Concrete Technology</p>
-            <p>Developed teaching materials and delivered lectures. [cite_start]Taught high school students how to conduct material compression tests. [cite: 98, 99]</p>
+            <p>Developed teaching materials and delivered lectures. Taught high school students how to conduct material compression tests.</p>
         </div>
     </section>
 
@@ -99,8 +103,8 @@
                     <div class="p-4 border rounded shadow-sm h-100">
                         <h4 class="text-primary">Technical</h4>
                         <ul class="list-unstyled">
-                            [cite_start]<li>Construction Technology [cite: 74]</li>
-                            [cite_start]<li>Cost Estimation [cite: 75]</li>
+                            <li>Construction Technology</li>
+                            <li>Cost Estimation</li>
                         </ul>
                     </div>
                 </div>
@@ -108,8 +112,8 @@
                     <div class="p-4 border rounded shadow-sm h-100">
                         <h4 class="text-danger">Software</h4>
                         <ul class="list-unstyled">
-                            [cite_start]<li>Autodesk AutoCAD (Good) [cite: 77]</li>
-                            [cite_start]<li>Microsoft Office (Good) [cite: 78]</li>
+                            <li>Autodesk AutoCAD (Good)</li>
+                            <li>Microsoft Office (Good)</li>
                         </ul>
                     </div>
                 </div>
@@ -117,8 +121,8 @@
                     <div class="p-4 border rounded shadow-sm h-100">
                         <h4 class="text-success">Soft Skills</h4>
                         <ul class="list-unstyled">
-                            [cite_start]<li>Time Management [cite: 80]</li>
-                            [cite_start]<li>Teamwork & Adaptability [cite: 81, 82]</li>
+                            <li>Time Management</li>
+                            <li>Teamwork & Adaptability</li>
                         </ul>
                     </div>
                 </div>
