@@ -55,27 +55,11 @@
             <footer class="footer-style position-absolute bottom-0 w-100 py-1">
                 <p class="text-center text-white small">© 2026 No Sleep Party. All Rights Reserved.</p>
             </footer>
+
         </section>
     </div>
 
-
-    <script>
-        const observerOptions = {
-            threshold: 0.2
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                } else {
-                    // ลบ class ออกเพื่อให้เล่นอนิเมชันใหม่เมื่อเลื่อนกลับขึ้นไป (ถ้าต้องการ)
-                    entry.target.classList.remove('show');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-    </script>
+    <script src="script.js"></script>
+    
 </body>
 </html>
