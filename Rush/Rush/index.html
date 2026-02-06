@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Center - พรรคนี้ไม่ได้นอน</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="election-body">
+
+    <div class="bg-election"></div>
+
+    <div class="snap-container">
+        
+        <section class="snap-section">
+            <div class="party-header reveal">
+                <h1 class="party-title">พรรคนี้ไม่ได้นอน</h1>
+                <p class="party-subtitle">เลือกคนที่คุณชอบ กากบาทคนที่คุณใช่!</p>
+            </div>
+        </section>
+
+        <section class="snap-section">
+            <div class="container pb-5">
+                <div class="row justify-content-center g-4">
+                    
+                    <div class="col-md-6 col-lg-4 reveal delay-1">
+                        <div class="candidate-card">
+                            <div class="candidate-number">1</div>
+                            <img src="nuttaphut_pic.jpg" alt="Nuttaphut" class="candidate-img">
+                            <div class="p-4 text-center">
+                                <h2 class="candidate-info">Nuttaphut Taweesang</h2>
+                                <p class="text-muted">Candidate No.1</p>
+                                <p class="candidate-slogan">"อิฐพร้อมก่อ...สุดหล่อพร้อมยัง"</p>
+                            </div>
+                            <a href="port1_nuttaphut.html" class="btn-vote">❌ ดูพอร์ตโฟลิโอ</a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 reveal delay-2">
+                        <div class="candidate-card">
+                            <div class="candidate-number">2</div>
+                            <img src="tripob_pic.png" alt="Tripob" class="candidate-img">
+                            <div class="p-4 text-center">
+                                <h2 class="candidate-info">Tripob Namthip</h2>
+                                <p class="text-muted">Candidate No.2</p>
+                                <p class="candidate-slogan">"เห็นเสานั่นไหมครับ...ผมเป็นคนหล่อ"</p>
+                            </div>
+                            <a href="port2_tripob.html" class="btn-vote">❌ ดูพอร์ตโฟลิโอ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer-style">
+                <p class="text-center text-white small">© 2026 No Sleep Party. All Rights Reserved.</p>
+            </footer>
+        </section>
+    </div>
+
+
+    <script>
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    // ลบ class ออกเพื่อให้เล่นอนิเมชันใหม่เมื่อเลื่อนกลับขึ้นไป (ถ้าต้องการ)
+                    entry.target.classList.remove('show');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
