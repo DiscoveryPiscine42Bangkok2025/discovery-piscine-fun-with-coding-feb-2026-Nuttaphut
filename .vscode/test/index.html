@@ -2,13 +2,13 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ELECTION 2569 - ชนะใสๆ ไร้คู่แข่ง</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;600;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #E30613;
-            --accent: #FFD700; /* สีทอง */
+            --accent: #FFD700;
             --bg: #050505;
             --text: #fff;
             --card-bg: #1a1a1a;
@@ -20,14 +20,15 @@
             font-family: 'Prompt', sans-serif;
             margin: 0;
             padding-bottom: 50px;
-            overflow-x: hidden; /* ป้องกัน scroll แนวนอนตอนพลุเด้ง */
+            overflow-x: hidden;
             text-align: center;
+            -webkit-tap-highlight-color: transparent; /* ปิดสี highlight เวลาแตะบนมือถือ */
         }
 
         /* HEADER */
         header {
             background: #000;
-            padding: 15px 20px;
+            padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -40,154 +41,166 @@
         .live-badge {
             background: #ff0000;
             color: white;
-            padding: 4px 12px;
+            padding: 4px 10px;
             border-radius: 50px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 900;
             animation: pulse 1s infinite;
         }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 
-        /* HERO SECTION */
+        /* HERO */
         .hero {
-            padding: 40px 20px;
-            background: radial-gradient(circle at center, #330000 0%, var(--bg) 70%);
+            padding: 30px 15px;
+            background: radial-gradient(circle at center, #330000 0%, var(--bg) 80%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
         }
 
         .candidate-box {
             position: relative;
-            width: 280px;  /* ขนาดใหญ่สะใจ */
-            height: 280px;
-            margin-bottom: 25px;
+            width: 200px; /* ปรับขนาดให้พอดีมือถือ */
+            height: 200px;
+            margin-bottom: 20px;
             z-index: 10;
         }
+        @media (min-width: 768px) { .candidate-box { width: 280px; height: 280px; } } /* iPad/PC ใหญ่ขึ้น */
 
         .candidate-img {
             width: 100%; height: 100%;
             border-radius: 50%;
-            border: 8px solid var(--primary);
-            box-shadow: 0 0 50px rgba(227, 6, 19, 0.6);
+            border: 6px solid var(--primary);
+            box-shadow: 0 0 30px rgba(227, 6, 19, 0.6);
             background: #333;
-            
-            /* --- ซูมหน้า --- */
             object-fit: cover;
-            object-position: center 20%; /* เลื่อนจุดโฟกัสไปที่หน้า */
+            object-position: center 20%;
             transform: scale(1.05);
             transition: transform 0.3s;
         }
         
-        /* Effect ตอนชนะ: รูปขยายใหญ่และมีแสงทอง */
         .candidate-img.winner-mode {
             border-color: var(--accent);
-            box-shadow: 0 0 80px rgba(255, 215, 0, 0.8);
-            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.8);
             animation: bounce 0.5s infinite alternate;
         }
-        @keyframes bounce { from { transform: scale(1.15) rotate(5deg); } to { transform: scale(1.2) rotate(-5deg); } }
+        @keyframes bounce { from { transform: scale(1.1); } to { transform: scale(1.15); } }
 
         .crown {
-            position: absolute; top: -50px; left: 50%;
+            position: absolute; top: -40px; left: 50%;
             transform: translateX(-50%) rotate(-10deg);
-            font-size: 80px; z-index: 20;
+            font-size: 60px; z-index: 20;
             filter: drop-shadow(0 5px 5px #000);
             animation: float 2s ease-in-out infinite;
         }
-        @keyframes float { 0%, 100% { transform: translateX(-50%) rotate(-10deg) translateY(0); } 50% { transform: translateX(-50%) rotate(-10deg) translateY(-10px); } }
+        @media (min-width: 768px) { .crown { font-size: 80px; top: -50px; } }
 
-        h1 { font-size: 2.8rem; margin: 10px 0; line-height: 1.1; z-index: 10; }
-        .quote { color: #aaa; font-style: italic; z-index: 10; }
+        h1 { font-size: 2rem; margin: 10px 0; line-height: 1.1; z-index: 10; }
+        .quote { color: #aaa; font-style: italic; font-size: 0.9rem; z-index: 10; }
 
         /* SCOREBOARD */
-        .scoreboard { display: flex; justify-content: center; gap: 15px; margin: 20px auto; flex-wrap: wrap; z-index: 10; position: relative;}
-        .score-card { background: var(--card-bg); border-radius: 12px; padding: 20px; min-width: 140px; border: 1px solid #333; }
-        .score-card.winner { background: var(--primary); border: 2px solid var(--accent); transform: scale(1.1); }
-        .number { font-size: 3rem; font-weight: 900; line-height: 1; }
-        .label { font-size: 0.9rem; opacity: 0.9; margin-top: 5px; }
+        .scoreboard { display: flex; justify-content: center; gap: 10px; margin: 20px auto; flex-wrap: wrap; padding: 0 10px; }
+        .score-card { background: var(--card-bg); border-radius: 12px; padding: 15px; width: 45%; border: 1px solid #333; }
+        .score-card.winner { background: var(--primary); border: 2px solid var(--accent); transform: scale(1.05); }
+        .number { font-size: 2.5rem; font-weight: 900; line-height: 1; }
+        .label { font-size: 0.8rem; opacity: 0.9; margin-top: 5px; }
 
-        /* PROGRESS BAR */
-        .bar-container { width: 90%; max-width: 600px; margin: 20px auto; background: #333; height: 35px; border-radius: 50px; overflow: hidden; border: 2px solid #555; position: relative; z-index: 10; }
-        .bar-fill { height: 100%; background: linear-gradient(90deg, #ff3333, var(--primary)); width: 0%; transition: width 0.1s linear; display: flex; align-items: center; justify-content: flex-end; padding-right: 15px; font-weight: bold; white-space: nowrap; font-size: 1.2rem; text-shadow: 1px 1px 2px black;}
+        /* BAR */
+        .bar-container { width: 90%; max-width: 600px; margin: 20px auto; background: #333; height: 30px; border-radius: 50px; overflow: hidden; border: 2px solid #555; position: relative; z-index: 10; }
+        .bar-fill { height: 100%; background: linear-gradient(90deg, #ff3333, var(--primary)); width: 0%; transition: width 0.1s linear; display: flex; align-items: center; justify-content: flex-end; padding-right: 15px; font-weight: bold; white-space: nowrap; font-size: 1rem; text-shadow: 1px 1px 2px black;}
 
         /* MAP SECTION */
-        .map-section { margin-top: 40px; position: relative; z-index: 10; }
-        .thailand-map-wrapper { display: flex; justify-content: center; padding: 20px; overflow-x: auto; }
+        .map-section { margin-top: 30px; position: relative; z-index: 10; }
+        .thailand-map-wrapper { 
+            display: flex; justify-content: center; padding: 10px; 
+            overflow-x: auto; /* ให้เลื่อนซ้ายขวาได้บนจอมือถือเล็กๆ */
+        }
         
         .pixel-map {
             display: grid;
-            grid-template-columns: repeat(9, 35px);
-            grid-template-rows: repeat(16, 35px);
-            gap: 5px;
+            /* ปรับขนาดกล่องแผนที่ให้เล็กลงหน่อยสำหรับมือถือ */
+            grid-template-columns: repeat(9, 30px);
+            grid-template-rows: repeat(16, 30px);
+            gap: 4px;
+        }
+        @media (min-width: 768px) { 
+            .pixel-map { grid-template-columns: repeat(9, 40px); grid-template-rows: repeat(16, 40px); gap: 5px; } 
         }
 
         .map-box {
-            width: 35px; height: 35px;
+            width: 100%; height: 100%;
             background-color: #333;
-            border-radius: 6px;
-            position: relative;
-            cursor: pointer;
+            border-radius: 4px;
             border: 1px solid #444;
-            transition: all 0.2s;
+            transition: background 0.2s;
         }
+        .map-box.win { background-color: var(--primary); border-color: #ff5555; box-shadow: 0 0 5px rgba(255,0,0,0.5); }
+
+        /* --- NEW: LIST VIEW FOR MOBILE/TABLET --- */
+        .list-section {
+            padding: 20px 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .list-header {
+            text-align: left;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+
+        .province-grid {
+            display: grid;
+            /* มือถือ: 2 คอลัมน์, iPad/PC: 3-4 คอลัมน์ */
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 8px;
+        }
+        @media (min-width: 600px) { .province-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 900px) { .province-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        .province-card {
+            background: #222;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: left;
+            border-left: 4px solid #444;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .province-card.win {
+            background: #2d0000;
+            border-left: 4px solid var(--primary);
+            transform: scale(1.02);
+        }
+
+        .prov-name { display: block; color: #fff; font-weight: 600; margin-bottom: 2px; }
+        .prov-vote { display: block; color: #888; font-size: 0.8rem; font-family: monospace; }
+        .province-card.win .prov-vote { color: var(--primary); font-weight: bold; }
+
+
+        /* VICTORY EFFECTS */
+        .victory-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; display: none; }
+        .confetti { position: absolute; width: 8px; height: 8px; background: #f00; animation: fall linear forwards; }
+        @keyframes fall { to { transform: translateY(100vh) rotate(720deg); } }
         
-        .map-box:hover { transform: scale(1.4); z-index: 50; border-color: #fff; }
-
-        /* Tooltip */
-        .map-box::after {
-            content: attr(data-tooltip);
-            position: absolute; bottom: 130%; left: 50%; transform: translateX(-50%);
-            background: rgba(0,0,0,0.9); color: white; padding: 5px 10px; border-radius: 4px;
-            font-size: 12px; opacity: 0; pointer-events: none; white-space: nowrap;
-            border: 1px solid var(--accent); pointer-events: none;
-        }
-        .map-box:hover::after { opacity: 1; bottom: 140%; }
-
-        .map-box.win {
-            background-color: var(--primary);
-            box-shadow: 0 0 10px rgba(227, 6, 19, 0.4);
-            border-color: #ff5555;
-        }
-
-        /* --- VICTORY EFFECTS (ส่วนเพิ่มเติม) --- */
-        .victory-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 999;
-            display: none; /* ซ่อนไว้ก่อน */
-        }
-        
-        .confetti {
-            position: absolute;
-            width: 10px; height: 10px;
-            background: #f00;
-            animation: fall linear forwards;
-        }
-
-        @keyframes fall {
-            to { transform: translateY(100vh) rotate(720deg); }
-        }
-
         .winner-text {
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0);
-            font-size: 5rem; font-weight: 900;
-            color: var(--accent);
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 2px 2px 0 #000;
-            z-index: 1000;
-            pointer-events: none;
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            white-space: nowrap;
+            font-size: 4rem; font-weight: 900; color: var(--accent);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8); z-index: 1000;
+            pointer-events: none; transition: transform 0.5s; white-space: nowrap;
         }
-        
         .winner-text.show { transform: translate(-50%, -50%) scale(1); }
+        @media (max-width: 600px) { .winner-text { font-size: 2.5rem; } }
 
     </style>
 </head>
 <body>
 
     <header>
-        <div style="font-weight:900;">THE FONG STANDARD <span style="color:var(--primary); font-weight:300;">PARODY</span></div>
+        <div style="font-weight:900;">THE STANDARD <span style="color:var(--primary); font-weight:300;">PARODY</span></div>
         <div class="live-badge">LIVE REPORT 🔴</div>
     </header>
 
@@ -196,8 +209,7 @@
             <div class="crown">👑</div>
             <img src="fong.jpg" class="candidate-img" id="heroImg" alt="พี่ฟง" onerror="this.src='https://ui-avatars.com/api/?name=Fong&background=E30613&color=fff&size=256'">
         </div>
-        
-        <div style="color:var(--primary); font-weight:bold; font-size:1.5rem;">พรรคเพื่อฟงโกงอย่างตั้งใจ</div>
+        <div style="color:var(--primary); font-weight:bold; font-size:1.2rem;">พรรคเพื่อฟงโกงอย่างตั้งใจ</div>
         <h1>พี่ฟง (ท่านผู้นำ)</h1>
         <p class="quote">"ชนะตั้งแต่ยังไม่หย่อนบัตร!"</p>
     </div>
@@ -206,7 +218,7 @@
     <div class="winner-text" id="winnerText">WINNER!</div>
 
     <div class="scoreboard">
-        <div class="score-card winner" id="scoreCard">
+        <div class="score-card winner">
             <div class="label">พรรคพี่ฟง</div>
             <div class="number" id="myScore">0</div>
             <div class="label">ที่นั่ง (Landslide)</div>
@@ -229,8 +241,15 @@
         </div>
     </div>
 
+    <div class="list-section">
+        <div class="list-header">📊 คะแนนรายจังหวัด (ดูง่ายสบายตา)</div>
+        <div class="province-grid" id="provinceList">
+            </div>
+    </div>
+
     <script>
         const mapContainer = document.getElementById('thailandMap');
+        const listContainer = document.getElementById('provinceList');
         const scoreEl = document.getElementById('myScore');
         const barEl = document.getElementById('progress');
         const confettiContainer = document.getElementById('confettiContainer');
@@ -238,15 +257,15 @@
         const heroImg = document.getElementById('heroImg');
         const totalSeats = 500;
 
-        // ข้อมูลพิกัดแผนที่ (ชุดเดิมที่แม่นยำ)
+        // ข้อมูลพิกัดแผนที่
         const mapData = [
             {n:"เชียงราย",r:1,c:3}, {n:"แม่ฮ่องสอน",r:1,c:1}, {n:"เชียงใหม่",r:2,c:2}, {n:"พะเยา",r:2,c:3}, {n:"น่าน",r:2,c:4},
             {n:"ลำพูน",r:3,c:2}, {n:"ลำปาง",r:3,c:3}, {n:"แพร่",r:3,c:4}, {n:"อุตรดิตถ์",r:3,c:5},
             {n:"ตาก",r:4,c:1}, {n:"สุโขทัย",r:4,c:3}, {n:"พิษณุโลก",r:4,c:4}, {n:"เลย",r:4,c:5},
             {n:"กำแพงเพชร",r:5,c:2}, {n:"พิจิตร",r:5,c:3}, {n:"เพชรบูรณ์",r:5,c:4}, {n:"ชัยภูมิ",r:5,c:5}, {n:"ขอนแก่น",r:5,c:6}, {n:"กาฬสินธุ์",r:5,c:7}, {n:"มุกดาหาร",r:5,c:8},
             {n:"อุทัยธานี",r:6,c:2}, {n:"นครสวรรค์",r:6,c:3}, {n:"มหาสารคาม",r:6,c:6}, {n:"ร้อยเอ็ด",r:6,c:7}, {n:"ยโสธร",r:6,c:8}, {n:"อำนาจเจริญ",r:6,c:9},
-            {n:"ชัยนาท",r:7,c:3}, {n:"ลพบุรี",r:7,c:5}, {n:"โคราช",r:7,c:6}, {n:"บุรีรัมย์",r:7,c:7}, {n:"สุรินทร์",r:7,c:8}, {n:"ศรีสะเกษ",r:7,c:9},
-            {n:"กาญจนบุรี",r:8,c:1}, {n:"สุพรรณ",r:8,c:2}, {n:"อยุธยา",r:8,c:4}, {n:"สระบุรี",r:8,c:5}, {n:"อุบลฯ",r:8,c:9},
+            {n:"ชัยนาท",r:7,c:3}, {n:"ลพบุรี",r:7,c:5}, {n:"นครราชสีมา",r:7,c:6}, {n:"บุรีรัมย์",r:7,c:7}, {n:"สุรินทร์",r:7,c:8}, {n:"ศรีสะเกษ",r:7,c:9},
+            {n:"กาญจนบุรี",r:8,c:1}, {n:"สุพรรณบุรี",r:8,c:2}, {n:"อยุธยา",r:8,c:4}, {n:"สระบุรี",r:8,c:5}, {n:"อุบลฯ",r:8,c:9},
             {n:"นครปฐม",r:9,c:3}, {n:"กทม.",r:9,c:4}, {n:"นครนายก",r:9,c:5}, {n:"ปราจีนบุรี",r:9,c:6}, {n:"สระแก้ว",r:9,c:7},
             {n:"ราชบุรี",r:10,c:2}, {n:"สมุทรสาคร",r:10,c:3}, {n:"สมุทรปราการ",r:10,c:4}, {n:"ฉะเชิงเทรา",r:10,c:5}, {n:"ชลบุรี",r:10,c:6},
             {n:"เพชรบุรี",r:11,c:3}, {n:"ระยอง",r:11,c:6}, {n:"จันทบุรี",r:11,c:7}, {n:"ตราด",r:12,c:8},
@@ -256,42 +275,53 @@
             {n:"ตรัง",r:16,c:2}, {n:"สงขลา",r:16,c:4}, {n:"ยะลา",r:16,c:5}, {n:"นราธิวาส",r:16,c:6}
         ];
 
-        let boxElements = [];
+        let gameItems = []; // เก็บทั้งกล่องแผนที่และการ์ดรายชื่อคู่กัน
 
-        // 1. สร้างแผนที่
+        // 1. สร้างแผนที่ + รายชื่อจังหวัด (Sync กัน)
         mapData.forEach(p => {
+            // สุ่มคะแนน
+            let rawVotes = Math.floor(Math.random() * 90000) + 10000;
+            let voteStr = rawVotes.toLocaleString();
+
+            // A. สร้างกล่องแผนที่ (Map Box)
             let box = document.createElement('div');
             box.className = 'map-box';
-            let votes = Math.floor(Math.random() * 90000) + 10000;
-            box.setAttribute('data-tooltip', `${p.n}: ${votes.toLocaleString()}`);
             box.style.gridRow = p.r;
             box.style.gridColumn = p.c;
             mapContainer.appendChild(box);
-            boxElements.push(box);
+
+            // B. สร้างการ์ดรายชื่อ (List Card) สำหรับมือถือ
+            let card = document.createElement('div');
+            card.className = 'province-card';
+            card.innerHTML = `
+                <span class="prov-name">${p.n}</span>
+                <span class="prov-vote">คะแนน: ${voteStr}</span>
+            `;
+            listContainer.appendChild(card);
+
+            // เก็บใส่ Array คู่กัน เพื่อให้เวลาแดง แดงพร้อมกัน
+            gameItems.push({ box: box, card: card });
         });
 
-        // 2. ฟังก์ชันปล่อยพลุ (Confetti)
+        // 2. Confetti Effect
         function launchConfetti() {
             confettiContainer.style.display = 'block';
-            const colors = ['#E30613', '#FFD700', '#FFFFFF', '#00FF00', '#00FFFF'];
-            
-            for(let i=0; i<150; i++) {
+            const colors = ['#E30613', '#FFD700', '#FFFFFF'];
+            for(let i=0; i<100; i++) {
                 let conf = document.createElement('div');
                 conf.className = 'confetti';
                 conf.style.left = Math.random() * 100 + 'vw';
                 conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 conf.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                conf.style.opacity = Math.random();
                 confettiContainer.appendChild(conf);
             }
         }
 
-        // 3. ฟังก์ชันนับคะแนน
+        // 3. Game Logic
         let score = 0;
         function runGame() {
             if(score < totalSeats) {
-                // เพิ่มทีละนิด
-                score += Math.floor(Math.random() * 6) + 2;
+                score += Math.floor(Math.random() * 7) + 3;
                 if(score > totalSeats) score = totalSeats;
 
                 scoreEl.innerText = score;
@@ -299,36 +329,43 @@
                 barEl.style.width = pct + "%";
                 barEl.innerText = pct + "%";
 
-                // ระบายสีแดง
-                let target = Math.floor((score/totalSeats) * boxElements.length);
-                for(let i=0; i<target; i++) {
-                    let rand = Math.floor(Math.random() * boxElements.length);
-                    boxElements[rand].classList.add('win');
+                // คำนวณจำนวนจังหวัดที่ต้อง "ชนะ" (เปลี่ยนสี)
+                let targetCount = Math.floor((score/totalSeats) * gameItems.length);
+                
+                // สุ่มเลือกจังหวัดให้ชนะเพิ่ม
+                for(let i=0; i<targetCount; i++) {
+                    let randIndex = Math.floor(Math.random() * gameItems.length);
+                    let item = gameItems[randIndex];
+                    
+                    // เปลี่ยน Class ทั้งกล่องแผนที่ และการ์ดรายชื่อ
+                    if(!item.box.classList.contains('win')) {
+                        item.box.classList.add('win');
+                        item.card.classList.add('win');
+                    }
                 }
 
-                // ยิ่งใกล้จบยิ่งช้าลงนิดนึงเพื่อลุ้น
-                let speed = score > 480 ? 100 : 30;
+                let speed = score > 450 ? 80 : 30;
                 setTimeout(runGame, speed);
             } else {
-                // --- จบเกม ชนะแล้ว! ---
                 finishGame();
             }
         }
 
         function finishGame() {
-            // 1. Bar เต็ม
             barEl.innerText = "ชนะขาดลอย!";
             barEl.style.width = "100%";
             barEl.style.background = "var(--accent)";
             barEl.style.color = "#000";
             
-            // 2. แผนที่แดงเถือก
-            boxElements.forEach(el => el.classList.add('win'));
+            // เปลี่ยนสีทุกอันให้ครบ (กันพลาด)
+            gameItems.forEach(item => {
+                item.box.classList.add('win');
+                item.card.classList.add('win');
+            });
 
-            // 3. เรียก Effect
-            heroImg.classList.add('winner-mode'); // รูปเด้งดึ๋ง
-            winnerText.classList.add('show');     // ตัวหนังสือ WINNER
-            launchConfetti();                     // ปล่อยพลุ
+            heroImg.classList.add('winner-mode');
+            winnerText.classList.add('show');
+            launchConfetti();
         }
 
         setTimeout(runGame, 1000);
